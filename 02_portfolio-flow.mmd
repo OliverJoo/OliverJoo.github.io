@@ -1,0 +1,17 @@
+graph LR
+    U["사용자 행동"] --> E{"이벤트"}
+    E -->|"테마·메뉴"| S["UI 상태 변경"]
+    S --> R["DOM·ARIA 렌더링"]
+    E -->|"GitHub 조회"| L["loading 상태"]
+    L --> A["GitHub API 요청"]
+    A --> D{"응답 결과"}
+    D -->|"정상"| OK["success + items"]
+    D -->|"실패"| ER["error + 안내"]
+    ER -->|"다시 시도"| A
+    ER -->|"샘플 데이터"| FB["FALLBACK_REPOS"]
+    OK --> P["필터·카드 렌더링"]
+    FB --> P
+    E -->|"언어 필터"| P
+    E -->|"문의 입력·제출"| V["필드 검증 상태"]
+    V --> R
+    P --> R

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="HTML, CSS, JavaScript로 만든 반응형 포트폴리오">
+  <title>Oliver | Web & AI Portfolio</title>
+  <link rel="icon" href="images/profile.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body data-github-username="OliverJoo">
+  <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
+
+  <!-- 고정 헤더: 내부 링크, 모바일 메뉴, 테마 전환을 제공한다. -->
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="주요 메뉴">
+      <a class="logo" href="#hero" aria-label="홈으로 이동">OJ<span>.</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="sr-only">메뉴 열기</span>
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" type="button" aria-label="다크 모드로 전환" aria-pressed="false">
+        <span aria-hidden="true">◐</span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero: 한 문장 소개와 주요 행동 버튼을 먼저 보여준다. -->
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">HELLO, I AM OLIVER JOO</p>
+          <h1>데이터와 기술로<br><span>명료한 가치</span>를 만듭니다.</h1>
+          <p class="hero-role" aria-live="polite">저는 <strong id="typing-text">금융 데이터 분석가</strong>입니다.</p>
+          <p class="hero-summary">금융 데이터 분석과 AI·웹·모바일 프로그래밍을 아우르며 현실의 문제를 코드로 풀어내는 개발자 Oliver입니다.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">프로젝트 보기</a>
+            <a class="button secondary" href="#contact">연락하기</a>
+          </div>
+        </div>
+        <aside class="hero-card reveal" aria-label="현재 핵심 역량">
+          <p>현재 집중하는 분야</p>
+          <strong>Data · AI · Web/Mobile</strong>
+          <ul>
+            <li>Financial Data & ML</li>
+            <li>Flutter & Web Interface</li>
+            <li>Agentic AI & Automation</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- About: 프로필 이미지와 학습 방향을 설명한다. -->
+    <section class="section" id="about">
+      <div class="container about-grid reveal">
+        <div class="portrait-frame">
+          <img src="images/profile.svg" alt="노트북으로 웹 인터페이스와 데이터를 개발하는 사람의 일러스트">
+        </div>
+        <article>
+          <p class="section-kicker">01 · ABOUT</p>
+          <h2>데이터를 분석하고, 직접 구현하며, 비즈니스 가치를 만듭니다.</h2>
+          <p>재무관리(MBA) 지식과 금융 데이터 분석, Java·Flutter·Python·웹 개발 경험을 바탕으로 현실의 문제를 다룹니다. 화면을 구성하는 프론트엔드부터 데이터 파이프라인, AI 에이전트 자동화까지 유기적으로 연결되는 엔드투엔드 솔루션을 지향합니다.</p>
+          <dl class="facts">
+            <div><dt>전문 분야</dt><dd>Financial Data · AI & Web/Mobile</dd></div>
+            <div><dt>실행 방식</dt><dd>데이터 분석 · 모델링 · 제품 구현</dd></div>
+          </dl>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills: 기술을 독립적인 article 카드로 구분한다. -->
+    <section class="section section-tint" id="skills">
+      <div class="container reveal">
+        <p class="section-kicker">02 · SKILLS</p>
+        <h2>현재 활용하는 핵심 기술</h2>
+        <div class="skills-grid">
+          <article class="skill-card"><span>Data & AI</span><h3>데이터 분석 & ML</h3><p>Python, Kaggle, LangChain을 활용한 금융 데이터 분석 및 AI 에이전트 파이프라인을 구축합니다.</p></article>
+          <article class="skill-card"><span>App & Core</span><h3>Flutter & Java</h3><p>Dart/Flutter 크로스 플랫폼 앱과 객체지향 백엔드로 안정적인 비즈니스 로직을 구현합니다.</p></article>
+          <article class="skill-card"><span>Web & UI</span><h3>반응형 웹 인터페이스</h3><p>시맨틱 HTML, 유연한 CSS, Vanilla JS를 기반으로 빠르고 접근성 높은 웹 화면을 만듭니다.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects: GitHub API 상태와 카드가 JavaScript로 렌더링된다. -->
+    <section class="section" id="projects">
+      <div class="container reveal">
+        <div class="section-heading">
+          <div><p class="section-kicker">03 · PROJECTS</p><h2>GitHub에서 불러온 프로젝트</h2></div>
+          <form class="github-search" id="github-search" novalidate>
+            <label for="github-username">GitHub 사용자</label>
+            <div><input id="github-username" name="username" autocomplete="username" value="OliverJoo" required><button class="button compact" type="submit">불러오기</button></div>
+          </form>
+        </div>
+        <div class="filter-bar" id="project-filters" aria-label="프로젝트 언어 필터"></div>
+        <div class="project-status" id="project-status" role="status" aria-live="polite"></div>
+        <div class="projects-grid" id="project-list"></div>
+      </div>
+    </section>
+
+    <!-- Contact: 서버 전송 없이 입력 검증 흐름을 연습한다. -->
+    <section class="section section-tint" id="contact">
+      <div class="container contact-grid reveal">
+        <div>
+          <p class="section-kicker">04 · CONTACT</p>
+          <h2>함께 만들 이야기가 있나요?</h2>
+          <p>새로운 프로젝트 협업, 데이터 분석 및 AI 개발 관련 문의를 환영합니다. 아래 폼을 통해 메시지를 확인해 보시거나 GitHub 및 LinkedIn을 통해 언제든 연락해 주세요.</p>
+        </div>
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="field">
+            <label for="name">이름</label>
+            <input id="name" name="name" type="text" autocomplete="name" aria-describedby="name-error" required>
+            <small class="error" id="name-error"></small>
+          </div>
+          <div class="field">
+            <label for="email">이메일</label>
+            <input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error" required>
+            <small class="error" id="email-error"></small>
+          </div>
+          <div class="field">
+            <label for="message">메시지</label>
+            <textarea id="message" name="message" rows="5" aria-describedby="message-error" required></textarea>
+            <small class="error" id="message-error"></small>
+          </div>
+          <button class="button primary" type="submit">메시지 확인</button>
+          <p class="form-result" id="form-result" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer: 저작권과 외부 프로필 링크를 모은다. -->
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <p>© <span id="current-year"></span> Oliver Joo. Built with HTML, CSS & JavaScript.</p>
+      <div><a href="https://github.com/OliverJoo" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/oliverjoo" target="_blank" rel="noreferrer">LinkedIn</a></div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" type="button" aria-label="페이지 맨 위로 이동">↑</button>
+</body>
+</html>

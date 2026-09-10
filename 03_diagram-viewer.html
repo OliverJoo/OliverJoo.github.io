@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>b4-1 상태 흐름 다이어그램</title>
+  <link rel="icon" href="images/profile.svg" type="image/svg+xml">
+  <style>
+    *{box-sizing:border-box}body{margin:0;color:#edf7f0;background:#0d1511;font-family:Inter,Pretendard,system-ui,sans-serif}.toolbar{position:fixed;z-index:10;inset:0 0 auto;display:flex;align-items:center;gap:.55rem;padding:.8rem 1rem;background:#121e17e8;border-bottom:1px solid #34473b;backdrop-filter:blur(14px)}.toolbar strong{margin-right:auto}.toolbar button{padding:.5rem .75rem;color:#edf7f0;background:#203027;border:1px solid #456050;border-radius:.5rem;cursor:pointer}.toolbar a{color:#88d9ad}.viewport{height:100vh;padding-top:4.5rem;overflow:auto;cursor:grab}.viewport.dragging{cursor:grabbing}.canvas{min-width:100%;min-height:100%;display:grid;place-items:center;padding:3rem}.canvas img{width:min(1050px,90vw);max-width:none;transform-origin:center;transition:transform .12s ease;filter:drop-shadow(0 20px 50px #0008)}
+  </style>
+</head>
+<body>
+  <div class="toolbar"><strong>이벤트 → 상태 → 렌더링</strong><button type="button" id="out">−</button><span id="scale">100%</span><button type="button" id="in">+</button><button type="button" id="reset">초기화</button><a href="README_answer.html#diagram">답변으로</a></div>
+  <div class="viewport" id="viewport"><div class="canvas"><img id="diagram" src="02_portfolio-flow.svg" alt="포트폴리오 이벤트, 상태, DOM 업데이트 흐름"></div></div>
+  <script>
+    // 버튼·트랙패드로 확대하고 드래그로 넓은 다이어그램을 이동한다.
+    const viewport=document.querySelector('#viewport');const diagram=document.querySelector('#diagram');const scaleText=document.querySelector('#scale');let scale=1;let drag=null;
+    const applyScale=next=>{scale=Math.min(3,Math.max(.4,next));diagram.style.transform=`scale(${scale})`;scaleText.textContent=`${Math.round(scale*100)}%`;};
+    document.querySelector('#in').addEventListener('click',()=>applyScale(scale+.15));document.querySelector('#out').addEventListener('click',()=>applyScale(scale-.15));document.querySelector('#reset').addEventListener('click',()=>{applyScale(1);viewport.scrollTo({top:0,left:0,behavior:'smooth'});});
+    viewport.addEventListener('wheel',event=>{if(event.ctrlKey||event.metaKey){event.preventDefault();applyScale(scale+(event.deltaY<0?.1:-.1));}},{passive:false});
+    viewport.addEventListener('pointerdown',event=>{drag={x:event.clientX,y:event.clientY,left:viewport.scrollLeft,top:viewport.scrollTop};viewport.classList.add('dragging');viewport.setPointerCapture(event.pointerId);});
+    viewport.addEventListener('pointermove',event=>{if(!drag)return;viewport.scrollLeft=drag.left-(event.clientX-drag.x);viewport.scrollTop=drag.top-(event.clientY-drag.y);});
+    viewport.addEventListener('pointerup',()=>{drag=null;viewport.classList.remove('dragging');});
+  </script>
+</body>
+</html>

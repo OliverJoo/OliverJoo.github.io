@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" role="img" aria-labelledby="title desc">
+  <title id="title">노트북으로 웹을 개발하는 사람</title>
+  <desc id="desc">주황색 배경 앞에서 노트북 화면을 바라보는 개발자 일러스트</desc>
+  <rect width="720" height="720" rx="48" fill="#ff5a36"/>
+  <circle cx="590" cy="126" r="70" fill="#ffd8cc" opacity=".8"/>
+  <path d="M90 565c38-126 121-190 248-190s217 65 270 190v95H90z" fill="#17211b"/>
+  <circle cx="350" cy="267" r="116" fill="#f2b58f"/>
+  <path d="M235 255c-8-87 45-148 129-148 89 0 136 68 117 157-31-38-75-61-132-66-34 36-73 55-114 57z" fill="#17211b"/>
+  <circle cx="313" cy="273" r="8" fill="#17211b"/>
+  <circle cx="397" cy="273" r="8" fill="#17211b"/>
+  <path d="M330 321c18 13 39 13 57 0" fill="none" stroke="#17211b" stroke-width="9" stroke-linecap="round"/>
+  <rect x="183" y="430" width="352" height="205" rx="18" fill="#f7f5ef" stroke="#17211b" stroke-width="12"/>
+  <path d="M144 635h430" stroke="#17211b" stroke-width="18" stroke-linecap="round"/>
+  <path d="m332 515-33 33 33 33m74-66 33 33-33 33m-25-86-34 106" fill="none" stroke="#ff5a36" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
