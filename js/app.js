@@ -306,12 +306,49 @@ elements.contactForm.querySelectorAll("input, textarea").forEach((field) => {
   });
 });
 
-elements.contactForm.addEventListener("submit", (event) => {
+elements.contactForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const fields = [...elements.contactForm.querySelectorAll("input, textarea")];
   const isValid = fields.map(validateField).every(Boolean);
-  elements.formResult.textContent = isValid ? "입력 확인이 완료되었습니다. 데모 폼이므로 실제 전송은 하지 않습니다." : "입력 내용을 다시 확인해 주세요.";
-  if (isValid) elements.contactForm.reset();
+  if (!isValid) {
+    elements.formResult.textContent = "입력 내용을 다시 확인해 주세요.";
+    elements.formResult.className = "form-result error";
+    return;
+  }
+
+  const submitButton = elements.contactForm.querySelector('button[type="submit"]');
+  const originalButtonText = submitButton.textContent;
+  submitButton.disabled = true;
+  submitButton.textContent = "전송 중...";
+  elements.formResult.textContent = "메시지를 전송하고 있습니다...";
+  elements.formResult.className = "form-result";
+
+  try {
+    const formData = new FormData(elements.contactForm);
+    const response = await fetch(elements.contactForm.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (response.ok) {
+      elements.formResult.textContent = "메시지가 성공적으로 전송되었습니다! 확인 후 곧 회신드리겠습니다.";
+      elements.formResult.className = "form-result success";
+      elements.contactForm.reset();
+    } else {
+      const data = await response.json().catch(() => ({}));
+      const errorMsg = data.errors ? data.errors.map((e) => e.message).join(", ") : "전송에 실패했습니다.";
+      throw new Error(errorMsg);
+    }
+  } catch (error) {
+    elements.formResult.textContent = `전송 중 오류가 발생했습니다 (${error.message}). 잠시 후 다시 시도해 주세요.`;
+    elements.formResult.className = "form-result error";
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = originalButtonText;
+  }
 });
 
 // 초기 상태를 화면에 한 번 렌더링한다.

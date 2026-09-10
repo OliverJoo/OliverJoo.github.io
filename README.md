@@ -55,7 +55,7 @@ PDF가 `css/`, `js/`, `images/` 역할 분리를 요구하므로 모든 산출�
 | GitHub API | `loadProjects` | 사용자 이름을 입력해 저장소 호출 |
 | API 4상태 | `renderProjects` | loading/success/error/empty UI |
 | 언어 필터 | `renderProjectFilters` | 프로젝트 언어 버튼 클릭 |
-| 폼 검증 | `validateField` | 빈 값·잘못된 이메일·짧은 메시지 입력 |
+| 폼 검증 & 전송 | `validateField`, Formspree | 빈 값·이메일 검증 및 Formspree 비동기 이메일 전송 |
 | 타이핑 효과 | `initializeTypingEffect` | Hero 역할 문구 확인 |
 | 시스템 테마 감지 | `getInitialTheme` | 저장값이 없을 때 OS 테마 반영 |
 
@@ -99,13 +99,14 @@ https://api.github.com/users/{username}/repos?sort=updated&per_page=12
 → 로딩·성공·에러·빈 화면 중 하나 표시
 ```
 
-### 문의 폼
+### 문의 폼 (Formspree 이메일 전송)
 
 ```text
 input 또는 submit
-→ state.form.errors 변경
-→ aria-invalid와 필드별 오류 문구 변경
-→ 전체가 유효할 때 성공 메시지 표시
+→ state.form.errors 변경 및 실시간 피드백
+→ 전체 필드 유효성 통과 시 Formspree 비동기 POST
+→ 전송 중 버튼 비활성화 및 로딩 피드백
+→ 성공 시 완료 안내 표시 및 폼 초기화
 ```
 
 구조 다이어그램은 [02_portfolio-flow.svg](./02_portfolio-flow.svg)에서 볼 수 있고, 확대가 필요하면 [03_diagram-viewer.html](./03_diagram-viewer.html)을 연다.

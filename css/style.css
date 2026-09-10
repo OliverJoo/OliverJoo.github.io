@@ -141,7 +141,11 @@ h3 { font-size: 1.25rem; }
 .field [aria-invalid="true"] { border-color: #d93131; }
 .error { display: block; min-height: 1.5em; margin-top: .2rem; color: #c72b2b; font-weight: 700; }
 [data-theme="dark"] .error { color: #ff9898; }
-.form-result { min-height: 1.5em; margin: 1rem 0 0; font-weight: 800; }
+.form-result { min-height: 1.5em; margin: 1rem 0 0; font-weight: 800; transition: color .2s ease; }
+.form-result.error { color: #c72b2b; }
+.form-result.success { color: var(--accent); }
+[data-theme="dark"] .form-result.error { color: #ff9898; }
+[data-theme="dark"] .form-result.success { color: var(--accent); }
 
 .site-footer { padding: 2rem 0; border-top: 1px solid var(--line); }
 .footer-row { display: grid; gap: .8rem; color: var(--muted); font-size: .9rem; }
